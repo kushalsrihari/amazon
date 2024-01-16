@@ -54,15 +54,15 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){   
                        sh "docker build -t amazon ."
-                       sh "docker tag amazon sevenajay/amazon:latest "
-                       sh "docker push sevenajay/amazon:latest "
+                       sh "docker tag amazon kushalsrihari/amazon:latest "
+                       sh "docker push kushalsrihari/amazon:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image sevenajay/amazon:latest > trivyimage.txt" 
+                sh "trivy image kushalsrihari/amazon:latest > trivyimage.txt" 
             }
         }
     }
