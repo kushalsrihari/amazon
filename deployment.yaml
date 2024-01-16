@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amazon-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: amazon
+  template:
+    metadata:
+      labels:
+        app: amazon
+    spec:
+      containers:
+      - name: amazon-container
+        image: kushalsrihari/amazon:latest
+        ports:
+        - containerPort: 3000
