@@ -65,6 +65,11 @@ pipeline{
                 sh "trivy image kushalsrihari/amazon:latest > trivyimage.txt" 
             }
         }
+        stage('Deploy to container'){
+            steps{
+                sh 'docker run -d --name amazon -p 3000:3000 kushalsrihari/amazon:latest'
+            }
+        }
         stage('Deploy to kubernets'){
             steps{
                 script{
@@ -79,3 +84,5 @@ pipeline{
         }
     }
 }
+
+        
